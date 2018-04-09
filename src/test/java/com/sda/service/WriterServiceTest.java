@@ -51,6 +51,18 @@ public class WriterServiceTest {
     }
 
     @Test
+    public void testEmptyName() {
+        //given
+        String name = "   ";
+
+        //when
+        String result = writerService.write(name);
+
+        //then
+        Assert.assertEquals("Hello, my friend.", result);
+    }
+
+    @Test
     public void testCapitalizedName() {
         //given
         String name = "SZYMON";
