@@ -14,6 +14,36 @@ public class StringCalculatorTest {
     }
 
     @Test
+    public void testSingleNumber() {
+        //given
+        String value = "5";
+        //when
+        int result = calculator.calculate(value);
+        //then
+        Assert.assertEquals(5, result);
+    }
+
+    @Test
+    public void testMultipleNumbers() {
+        //given
+        String value = "1;2;3;4;5;6";
+        //when
+        int result = calculator.calculate(value);
+        //then
+        Assert.assertEquals(21, result);
+    }
+
+    @Test
+    public void testMultipleNumbersWithWhitespaces() {
+        //given
+        String value = "1;2     ;3 ;4 ;5\n;6";
+        //when
+        int result = calculator.calculate(value);
+        //then
+        Assert.assertEquals(21, result);
+    }
+
+    @Test
     public void testCalculationForBlankValue() {
         //given
         String value = "";

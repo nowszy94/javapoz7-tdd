@@ -7,7 +7,11 @@ public class StringCalculator {
         if (StringUtils.isBlank(text)) {
             return 0;
         }
-        String[] split = text.split(";");
-        return Integer.valueOf(split[0]) + Integer.valueOf(split[1]);
+        int result = 0;
+        String[] elements = text.split(";");
+        for (String element : elements) {
+            result += Integer.valueOf(StringUtils.deleteWhitespace(element));
+        }
+        return result;
     }
 }
