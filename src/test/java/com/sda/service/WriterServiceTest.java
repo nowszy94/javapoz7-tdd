@@ -73,4 +73,28 @@ public class WriterServiceTest {
         //then
         Assert.assertEquals("HELLO, SZYMON!", result);
     }
+
+    @Test
+    public void testMultipleNames() {
+        //given
+        String value = "Szymon,Anna,Jan";
+
+        //when
+        String result = writerService.write(value);
+
+        //then
+        Assert.assertEquals("Hello, Szymon, Anna and Jan.", result);
+    }
+
+    @Test
+    public void testMultipleCapitalizedNames() {
+        //given
+        String value = "SZYMON,ANNA,JAN";
+
+        //when
+        String result = writerService.write(value);
+
+        //then
+        Assert.assertEquals("HELLO, SZYMON, ANNA AND JAN!", result);
+    }
 }
