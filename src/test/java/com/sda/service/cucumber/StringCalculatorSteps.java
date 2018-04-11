@@ -21,34 +21,14 @@ public class StringCalculatorSteps {
         this.calculator = new StringCalculator();
     }
 
-    @Given("^I pass single number value$")
-    public void I_pass_single_number_value() {
-        this.value = "5";
-    }
-
-    @And("^I pass null value$")
+    @And("^I pass value null$")
     public void I_pass_null_value() {
         this.value = null;
     }
 
-    @And("^I pass empty value$")
-    public void I_pass_empty_value() {
-        this.value = "";
-    }
-
-    @And("^I pass two numbers value$")
-    public void I_pass_two_numbers_value() {
-        this.value = "2;7";
-    }
-
-    @And("^I pass multiple numbers value$")
-    public void I_pass_multiple_numbers_value() {
-        this.value = "2;3;4";
-    }
-
-    @And("^I pass multiple numbers with whitespaces value$")
-    public void I_pass_multiple_numbers_with_whitespaces_value() {
-        this.value = "2   ;3        ; \n4";
+    @Given("^I pass (.*) value$")
+    public void I_pass_single_number_value(String text) {
+        this.value = text;
     }
 
     @When("^I trigger calculate function$")
@@ -56,18 +36,8 @@ public class StringCalculatorSteps {
         this.result = calculator.calculate(value);
     }
 
-    @Then("^I get 5 as a result$")
-    public void I_get_5_as_a_result() {
-        Assert.assertEquals(5, result);
-    }
-
-    @Then("^I get 0 as a result$")
-    public void I_get_0_as_a_result() {
-        Assert.assertEquals(0, result);
-    }
-
-    @Then("^I get 9 as a result$")
-    public void I_get_9_as_a_result() {
-        Assert.assertEquals(9, result);
+    @Then("^I get (.*) as a result$")
+    public void I_get_5_as_a_result(int passedResult) {
+        Assert.assertEquals(passedResult, result);
     }
 }
